@@ -8,9 +8,17 @@
 
 ;;设定主题
 (require 'color-theme)
-(color-theme-initialize)
+;(color-theme-initialize)
 ;(color-theme-bharadwaj-slate)
-(color-theme-gnome2)
+;(color-theme-gnome2)
+
+(eval-after-load "color-theme"
+  '(progn
+     (color-theme-initialize)
+     (if (display-graphic-p)
+         (color-theme-gnome2)           ;gui主题
+       (color-theme-lawrence))))        ;cli主题
+
 
 ;;关闭起动时闪屏
 (setq inhibit-startup-message t)
